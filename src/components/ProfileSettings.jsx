@@ -1,0 +1,100 @@
+function ProfileSettings({ profile, onProfileChange }) {
+  function handleChange(event) {
+    const { name, value } = event.target
+
+    onProfileChange({
+      ...profile,
+      [name]: value,
+    })
+  }
+
+  function handlePhotoChange(event) {
+    const file = event.target.files?.[0]
+
+    if (!file) {
+      return
+    }
+
+    const reader = new FileReader()
+
+    reader.onload = () => {
+      onProfileChange({
+        ...profile,
+        photo: reader.result,
+      })
+    }
+
+    reader.readAsDataURL(file)
+  }
+
+  function handleRemovePhoto() {
+    onProfileChange({
+      ...profile,
+      photo: '',
+    })
+  }
+
+  return (
+    <section className="profile-card">
+      <div>
+        <h2>Profile</h2>
+        <p>Atur nama dan mata uang yang dipakai di dashboard.</p>
+      </div>
+
+      <div className="profile-photo-field">
+        <div className="profile-photo-preview">
+          {profile.photo ? (
+            <img src={profile.photo} alt={profile.userName || 'Profile'} />
+          ) : (
+            <span>{profile.userName.slice(0, 1) || 'U'}</span>
+          )}
+        </div>
+
+        <div className="profile-photo-actions">
+          <label>
+            Photo Profile
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoChange}
+            />
+          </label>
+
+          {profile.photo && (
+            <button type="button" onClick={handleRemovePhoto}>
+              Remove Photo
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="profile-grid">
+        <label>
+          Nama Pengguna
+          <input
+            type="text"
+            name="userName"
+            value={profile.userName}
+            onChange={handleChange}
+            placeholder="Nama kamu"
+          />
+        </label>
+
+        <label>
+          Currency
+          <select
+            name="currency"
+            value={profile.currency}
+            onChange={handleChange}
+          >
+            <option value="IDR">IDR - Rupiah</option>
+            <option value="USD">USD - Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+          </select>
+        </label>
+      </div>
+    </section>
+  )
+}
+
+export default ProfileSettings

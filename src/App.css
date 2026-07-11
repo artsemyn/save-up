@@ -1,0 +1,709 @@
+/* ===== Design Tokens from Figma ===== */
+:root {
+  --bg: #f8faf2;
+  --surface: #ffffff;
+  --surface-soft: #f2f5ec;
+  --surface-strong: #e6e9e1;
+  --text: #191d18;
+  --muted: #41493e;
+  --muted-2: #545f73;
+  --border: #c1c9bb;
+  --primary: #306b30;
+  --primary-soft: #8bca84;
+  --primary-text: #1a561e;
+  --secondary-soft: #d5e0f8;
+  --secondary-text: #586377;
+  --danger: #ba1a1a;
+  --danger-soft: #ffdad6;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== App Shell ===== */
+.app-shell {
+  display: grid;
+  grid-template-columns: 256px minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 24px 16px 16px;
+  border-right: 1px solid var(--border);
+  background: var(--surface-soft);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar h1 {
+  margin: 0 8px 40px;
+  color: var(--primary);
+  font-family: Manrope, Inter, system-ui, sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.sidebar-nav,
+.sidebar-links {
+  display: grid;
+  gap: 4px;
+}
+
+.sidebar-nav button,
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 16px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sidebar-nav button.active {
+  background: var(--secondary-soft);
+  color: var(--secondary-text);
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding: 24px 16px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  font-weight: 900;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-profile strong,
+.sidebar-profile span {
+  display: block;
+}
+
+.sidebar-profile strong {
+  font-size: 12px;
+}
+
+.sidebar-profile span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.app {
+  width: min(1024px, 100%);
+  min-height: 100vh;
+  padding: 48px;
+}
+
+/* ===== Header ===== */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.app h1,
+.app h2,
+.summary-card strong,
+.transaction-card strong,
+.saving-goal strong {
+  font-family: Manrope, Inter, system-ui, sans-serif;
+}
+
+.app-header h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.app-header p,
+.app p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.primary-action,
+.secondary-action {
+  min-height: 56px;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.secondary-action {
+  background: var(--surface-strong);
+  color: var(--text);
+}
+
+.primary-action {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Bento Grid ===== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 293px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.left-column {
+  display: grid;
+  gap: 24px;
+}
+
+.main-panel {
+  display: grid;
+  gap: 24px;
+}
+
+.page-stack {
+  display: grid;
+  gap: 24px;
+}
+
+.page-narrow {
+  width: min(560px, 100%);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+  gap: 24px;
+}
+
+/* ===== Shared Cards ===== */
+.transaction-form-card,
+.sources-card,
+.search-filter-card,
+.summary-card,
+.transaction-card,
+.saving-goal,
+.profile-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.transaction-form-card,
+.sources-card,
+.saving-goal,
+.profile-card {
+  padding: 25px;
+}
+
+.transaction-form-card h2,
+.sources-card h2,
+.profile-card h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: Manrope, Inter, system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* ===== Quick Entry Form ===== */
+.transaction-form {
+  margin-top: 16px;
+}
+
+.form-grid,
+.profile-grid,
+.saving-inputs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.transaction-form label,
+.type-field,
+.profile-card label,
+.saving-inputs label {
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.transaction-form input,
+.profile-card input,
+.profile-card select,
+.saving-inputs input {
+  min-height: 58px;
+  width: 100%;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.transaction-form input:focus,
+.profile-card input:focus,
+.profile-card select:focus,
+.saving-inputs input:focus {
+  border-color: var(--primary);
+  outline: 3px solid rgba(48, 107, 48, 0.16);
+}
+
+.type-toggle {
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+
+.type-toggle button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.type-toggle button.active {
+  border: 2px solid var(--primary);
+  background: rgba(139, 202, 132, 0.2);
+  color: var(--primary-text);
+}
+
+.type-toggle button:nth-child(2).active {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.transaction-form > button {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 16px;
+  padding: 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.form-error {
+  margin: 12px 0 0;
+  color: var(--danger);
+  font-size: 14px;
+}
+
+/* ===== Sources Card ===== */
+.card-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.card-heading-row button {
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font: inherit;
+  cursor: pointer;
+}
+
+.wallet-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.wallet-card + .wallet-card {
+  margin-top: 8px;
+}
+
+.wallet-card.active {
+  border: 2px solid var(--primary);
+  background: rgba(48, 107, 48, 0.05);
+}
+
+.wallet-card strong,
+.wallet-card span {
+  display: block;
+}
+
+.wallet-card strong {
+  font-size: 14px;
+}
+
+.wallet-card span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.wallet-card b {
+  color: var(--primary);
+  font-size: 14px;
+}
+
+/* ===== Saving Goal + Profile ===== */
+.saving-goal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.saving-goal h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.saving-goal strong {
+  color: var(--primary);
+  font-size: 28px;
+}
+
+.progress-track {
+  height: 10px;
+  margin: 18px 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-strong);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+.profile-card {
+  display: grid;
+  gap: 16px;
+}
+
+.profile-photo-field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.profile-photo-preview {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.profile-photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-photo-actions {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.profile-photo-actions label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.profile-photo-actions input {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.profile-photo-actions button {
+  width: max-content;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid rgba(186, 26, 26, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 218, 214, 0.22);
+  color: var(--danger);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ===== Summary + Search Panel ===== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summary-card {
+  display: grid;
+  gap: 4px;
+  padding: 17px;
+}
+
+.summary-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.summary-card strong {
+  font-size: 20px;
+}
+
+.summary-card p {
+  font-size: 12px;
+}
+
+.summary-card.income strong,
+.income-text {
+  color: var(--primary);
+}
+
+.summary-card.expense strong,
+.expense-text {
+  color: var(--danger);
+}
+
+.search-filter-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  min-height: 133px;
+  padding: 17px;
+}
+
+.search-box {
+  display: grid;
+  gap: 6px;
+}
+
+.search-box span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.search-box input {
+  min-height: 58px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-tabs button {
+  min-height: 50px;
+  padding: 16px 25px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.filter-tabs button.active {
+  border-color: var(--secondary-soft);
+  background: var(--secondary-soft);
+  color: var(--secondary-text);
+}
+
+/* ===== Transaction List ===== */
+.transaction-section-heading {
+  padding: 0 8px;
+  color: var(--muted);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.transaction-list {
+  display: grid;
+  gap: 8px;
+}
+
+.transaction-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 18px;
+  min-height: 82px;
+  padding: 17px 18px;
+}
+
+.transaction-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: Manrope, Inter, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.transaction-card p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.transaction-card strong {
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.delete-button {
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid rgba(186, 26, 26, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 218, 214, 0.22);
+  color: var(--danger);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.empty-state {
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1040px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    min-height: auto;
+  }
+
+  .sidebar-nav,
+  .sidebar-links,
+  .sidebar-profile {
+    display: none;
+  }
+
+  .app {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-header,
+  .search-filter-card {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .app-header {
+    flex-direction: column;
+  }
+
+  .header-actions,
+  .filter-tabs,
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-card {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .profile-photo-field {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
