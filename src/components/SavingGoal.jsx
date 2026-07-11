@@ -1,12 +1,13 @@
-import { formatCurrency } from '../utils/currency'
+import { formatCurrency, formatNumberInput, parseNumberInput } from '../utils/currency'
 
 function SavingGoal({ savingGoal, savingProgress, onGoalChange }) {
   function handleChange(event) {
     const { name, value } = event.target
+    const numericValue = parseNumberInput(value)
 
     onGoalChange({
       ...savingGoal,
-      [name]: Number(value),
+      [name]: numericValue === '' ? '' : Number(numericValue),
     })
   }
 
@@ -35,22 +36,24 @@ function SavingGoal({ savingGoal, savingProgress, onGoalChange }) {
         <label>
           Target
           <input
-            type="number"
+            type="text"
+            inputMode="numeric"
             name="target"
-            min="0"
-            value={savingGoal.target}
+            value={savingGoal.target === '' ? '' : formatNumberInput(savingGoal.target)}
             onChange={handleChange}
+            placeholder="0"
           />
         </label>
 
         <label>
           Terkumpul
           <input
-            type="number"
+            type="text"
+            inputMode="numeric"
             name="current"
-            min="0"
-            value={savingGoal.current}
+            value={savingGoal.current === '' ? '' : formatNumberInput(savingGoal.current)}
             onChange={handleChange}
+            placeholder="0"
           />
         </label>
       </div>

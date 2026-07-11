@@ -10,20 +10,20 @@ const InitialFormData = {
 }
 
 const categories = [
-    { value: 'salary', label: 'Gaji' },
-    { value: 'allowance', label: 'Uang Saku' },
-    { value: 'bonus', label: 'Bonus' },
-    { value: 'freelance', label: 'Freelance' },
-    { value: 'food', label: 'Makanan' },
-    { value: 'transportation', label: 'Transportasi' },
-    { value: 'shopping', label: 'Belanja' },
-    { value: 'education', label: 'Pendidikan' },
-    { value: 'health', label: 'Kesehatan' },
-    { value: 'entertainment', label: 'Hiburan' },
-    { value: 'bills', label: 'Tagihan' },
-    { value: 'saving', label: 'Tabungan' },
-    { value: 'gift', label: 'Hadiah' },
-    { value: 'other', label: 'Lainnya' },
+    { value: 'Gaji', label: 'Gaji' },
+    { value: 'Uang Saku', label: 'Uang Saku' },
+    { value: 'Bonus', label: 'Bonus' },
+    { value: 'Freelance', label: 'Freelance' },
+    { value: 'Makanan', label: 'Makanan' },
+    { value: 'Transportasi', label: 'Transportasi' },
+    { value: 'Belanja', label: 'Belanja' },
+    { value: 'Pendidikan', label: 'Pendidikan' },
+    { value: 'Kesehatan', label: 'Kesehatan' },
+    { value: 'Hiburan', label: 'Hiburan' },
+    { value: 'Tagihan', label: 'Tagihan' },
+    { value: 'Tabungan', label: 'Tabungan' },
+    { value: 'Hadiah', label: 'Hadiah' },
+    { value: 'Lainnya', label: 'Lainnya' },
 ]
 
 function TransactionForm({ onAddTransaction}) {
@@ -82,18 +82,18 @@ function TransactionForm({ onAddTransaction}) {
         <form className="transaction-form" onSubmit={handleSubmit}>
             <div className="form-grid">
                 <label>
-                    Description
+                    Deskripsi
                     <input
                         type="text"
                         name="title"
                         value={formData.title}
                         onChange={handleChange}
-                        placeholder="e.g. Weekly Groceries"
+                        placeholder="Contoh: Belanja mingguan"
                     />
                 </label>
 
                 <label>
-                    Amount
+                    Jumlah
                     <input
                         type="text"
                         inputMode="numeric"
@@ -105,14 +105,14 @@ function TransactionForm({ onAddTransaction}) {
                 </label>
 
                 <div className="type-field">
-                    Money Type
+                    Jenis Transaksi
                     <div className="type-toggle">
                         <button
                             type="button"
                             className={formData.type === 'income' ? 'active' : ''}
                             onClick={() => handleTypeChange('income')}
                         >
-                            Income
+                            Pemasukan
                         </button>
 
                         <button
@@ -120,19 +120,19 @@ function TransactionForm({ onAddTransaction}) {
                             className={formData.type === 'expense' ? 'active' : ''}
                             onClick={() => handleTypeChange('expense')}
                         >
-                            Expense
+                            Pengeluaran
                         </button>
                     </div>
                 </div>
 
                 <label>
-                    Category
+                    Kategori
                     <input
                         list="category-options"
                         name="category"
                         value={formData.category}
                         onChange={handleChange}
-                        placeholder="Search category"
+                        placeholder="Cari kategori"
                     />
                     <datalist id="category-options">
                         {categories.map((category) => (
@@ -144,7 +144,7 @@ function TransactionForm({ onAddTransaction}) {
                 </label>
 
                 <label>
-                    Date
+                    Tanggal
                     <input
                         type="date"
                         name="date"
@@ -156,7 +156,7 @@ function TransactionForm({ onAddTransaction}) {
 
             {errors && <p className="form-error">{errors}</p>}
 
-            <button type="submit">Record Transaction</button>
+            <button type="submit">Simpan Transaksi</button>
         </form>
     )
 }

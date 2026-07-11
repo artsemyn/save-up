@@ -4,7 +4,7 @@ export const dummyTransactions = [
         title: 'Uang saku',
         amount: 500000,
         type: 'income',
-        category: 'Allowance',
+        category: 'Uang Saku',
         date: '2026-07-10',
     },
     {
@@ -12,15 +12,15 @@ export const dummyTransactions = [
         title: 'Makan siang',
         amount: 35000,
         type: 'expense',
-        category: 'Food',
+        category: 'Makanan',
         date: '2026-07-10',
     },
     {
         id: 'trx-3',
-        title: 'Transport',
+        title: 'Transportasi',
         amount: 20000,
         type: 'expense',
-        category: 'Transport',
+        category: 'Transportasi',
         date: '2026-07-09',
     },
 ]

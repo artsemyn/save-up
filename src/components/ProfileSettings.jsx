@@ -37,14 +37,14 @@ function ProfileSettings({ profile, onProfileChange }) {
   return (
     <section className="profile-card">
       <div>
-        <h2>Profile</h2>
+        <h2>Profil</h2>
         <p>Atur nama dan foto profil. Mata uang aplikasi memakai Rupiah.</p>
       </div>
 
       <div className="profile-photo-field">
         <div className="profile-photo-preview">
           {profile.photo ? (
-            <img src={profile.photo} alt={profile.userName || 'Profile'} />
+            <img src={profile.photo} alt={profile.userName || 'Profil'} />
           ) : (
             <span>{profile.userName.slice(0, 1) || 'U'}</span>
           )}
@@ -52,7 +52,7 @@ function ProfileSettings({ profile, onProfileChange }) {
 
         <div className="profile-photo-actions">
           <label>
-            Photo Profile
+            Foto Profil
             <input
               type="file"
               accept="image/*"
@@ -62,7 +62,7 @@ function ProfileSettings({ profile, onProfileChange }) {
 
           {profile.photo && (
             <button type="button" onClick={handleRemovePhoto}>
-              Remove Photo
+              Hapus Foto
             </button>
           )}
         </div>
