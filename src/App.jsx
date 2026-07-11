@@ -48,7 +48,6 @@ function App() {
   const [profile, setProfile] = useState(() =>
     readStorage(STORAGE_KEY.profile, {
       userName: 'Kal',
-      currency: 'IDR',
       photo: '',
     })
   )
@@ -135,7 +134,7 @@ function App() {
     },
     '/profile': {
       title: 'Profile Settings',
-      description: 'Update your profile photo, name, and currency.',
+      description: 'Update your profile photo and display name.',
     },
   }
   const currentPage = pageContent[location.pathname] ?? pageContent['/']
@@ -209,19 +208,19 @@ function App() {
                 <div className="summary-grid">
                   <SummaryCard
                     label="Balance"
-                    value={formatCurrency(summary.balance, profile.currency)}
+                    value={formatCurrency(summary.balance)}
                     description="Current total"
                     type="balance"
                   />
                   <SummaryCard
                     label="Income"
-                    value={formatCurrency(summary.income, profile.currency)}
+                    value={formatCurrency(summary.income)}
                     description="Money in"
                     type="income"
                   />
                   <SummaryCard
                     label="Expense"
-                    value={formatCurrency(summary.expense, profile.currency)}
+                    value={formatCurrency(summary.expense)}
                     description="Money out"
                     type="expense"
                   />
@@ -229,7 +228,6 @@ function App() {
 
                 <div className="dashboard-grid">
                   <SavingGoal
-                    currency={profile.currency}
                     savingGoal={savingGoal}
                     savingProgress={savingProgress}
                     onGoalChange={handleGoalChange}
@@ -246,7 +244,7 @@ function App() {
                         <strong>Main Checking</strong>
                         <span>Active - **** 8821</span>
                       </div>
-                      <b>{formatCurrency(summary.balance, profile.currency)}</b>
+                      <b>{formatCurrency(summary.balance)}</b>
                     </div>
 
                     <div className="wallet-card">
@@ -254,7 +252,7 @@ function App() {
                         <strong>Saving Goal</strong>
                         <span>{Math.round(savingProgress)}% completed</span>
                       </div>
-                      <b>{formatCurrency(savingGoal.current, profile.currency)}</b>
+                      <b>{formatCurrency(savingGoal.current)}</b>
                     </div>
                   </section>
                 </div>
@@ -262,7 +260,6 @@ function App() {
                 <section className="main-panel">
                   <div className="transaction-section-heading">Recent Transactions</div>
                   <TransactionList
-                    currency={profile.currency}
                     transactions={transactions.slice(0, 3)}
                     onDeleteTransaction={handleDeleteTransaction}
                   />
@@ -327,7 +324,6 @@ function App() {
 
                 <div className="transaction-section-heading">Today</div>
                 <TransactionList
-                  currency={profile.currency}
                   transactions={filteredTransactions}
                   onDeleteTransaction={handleDeleteTransaction}
                 />

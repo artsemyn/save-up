@@ -1,6 +1,6 @@
 import { formatCurrency } from '../utils/currency'
 
-function SavingGoal({ currency, savingGoal, savingProgress, onGoalChange }) {
+function SavingGoal({ savingGoal, savingProgress, onGoalChange }) {
   function handleChange(event) {
     const { name, value } = event.target
 
@@ -16,8 +16,8 @@ function SavingGoal({ currency, savingGoal, savingProgress, onGoalChange }) {
         <div>
           <h3>Target Tabungan</h3>
           <p>
-            {formatCurrency(savingGoal.current, currency)} dari{' '}
-            {formatCurrency(savingGoal.target, currency)}
+            {formatCurrency(savingGoal.current)} dari{' '}
+            {formatCurrency(savingGoal.target)}
           </p>
         </div>
 

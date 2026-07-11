@@ -1,6 +1,6 @@
 import { formatCurrency } from '../utils/currency'
 
-function TransactionCard({ currency, transaction, onDelete }) {
+function TransactionCard({ transaction, onDelete }) {
   const isIncome = transaction.type === 'income'
   const amountPrefix = isIncome ? '+' : '-'
 
@@ -15,7 +15,7 @@ function TransactionCard({ currency, transaction, onDelete }) {
 
       <strong className={isIncome ? 'income-text' : 'expense-text'}>
         {amountPrefix}
-        {formatCurrency(transaction.amount, currency)}
+        {formatCurrency(transaction.amount)}
       </strong>
 
       <button

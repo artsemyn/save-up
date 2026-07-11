@@ -1,6 +1,6 @@
 import TransactionCard from './TransactionCard'
 
-function TransactionList({ currency, transactions, onDeleteTransaction }) {
+function TransactionList({ transactions, onDeleteTransaction }) {
     if (transactions.length === 0) {
         return (
             <div className="empty-state">
@@ -15,7 +15,6 @@ function TransactionList({ currency, transactions, onDeleteTransaction }) {
             {transactions.map((transaction) => (
                 <TransactionCard
                     key={transaction.id}
-                    currency={currency}
                     transaction={transaction}
                     onDelete={onDeleteTransaction}
                 />
