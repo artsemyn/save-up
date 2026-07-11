@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { formatNumberInput, parseNumberInput } from '../utils/currency'
 
 const InitialFormData = {
     title: '',
@@ -34,7 +35,7 @@ function TransactionForm({ onAddTransaction}) {
 
         setFormData((currentData) => ({
             ...currentData,
-            [name]: value,
+            [name]: name === 'amount' ? parseNumberInput(value) : value,
         }))
     }
 
@@ -53,7 +54,7 @@ function TransactionForm({ onAddTransaction}) {
             return
         }
 
-        if (formData.amount === '') {
+        if (formData.amount === '' || Number(formData.amount) <= 0) {
             setErrors('Jumlah transaksi harus diisi')
             return
         }
@@ -94,11 +95,12 @@ function TransactionForm({ onAddTransaction}) {
                 <label>
                     Amount
                     <input
-                        type="number"
+                        type="text"
+                        inputMode="numeric"
                         name="amount"
-                        value={formData.amount}
+                        value={formData.amount ? formatNumberInput(formData.amount) : ''}
                         onChange={handleChange}
-                        placeholder="0.00"
+                        placeholder="0"
                     />
                 </label>
 

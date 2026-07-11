@@ -38,7 +38,7 @@ function ProfileSettings({ profile, onProfileChange }) {
     <section className="profile-card">
       <div>
         <h2>Profile</h2>
-        <p>Atur nama dan mata uang yang dipakai di dashboard.</p>
+        <p>Atur nama dan foto profil. Mata uang aplikasi memakai Rupiah.</p>
       </div>
 
       <div className="profile-photo-field">
@@ -78,19 +78,6 @@ function ProfileSettings({ profile, onProfileChange }) {
             onChange={handleChange}
             placeholder="Nama kamu"
           />
-        </label>
-
-        <label>
-          Currency
-          <select
-            name="currency"
-            value={profile.currency}
-            onChange={handleChange}
-          >
-            <option value="IDR">IDR - Rupiah</option>
-            <option value="USD">USD - Dollar</option>
-            <option value="EUR">EUR - Euro</option>
-          </select>
         </label>
       </div>
     </section>
